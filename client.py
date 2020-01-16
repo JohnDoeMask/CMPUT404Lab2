@@ -1,12 +1,11 @@
 import socket, sys
 
-
 def create_tcp_socket():
     print('Creating socket')
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     except (socket.error, msg):
-        print('Failed to create socket. Error code:,' +str(msg[0]) +'Error message :' + msg[1])
+        print('Failed to create socket. Error code:,' + str(msg[0]) +'Error message :' + msg[1])
         sys.exit()
     return s
 
@@ -15,6 +14,7 @@ def get_remote_ip(host):
         remote_ip = socket.gethostbyname(host)
     except Exception as e:
         print(e)
+        sys.exit()
     return remote_ip
 
 def send_data(serversocket, payload):
