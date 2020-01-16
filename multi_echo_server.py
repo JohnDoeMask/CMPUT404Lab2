@@ -13,7 +13,7 @@ def main():
         s.listen(2)
         while True:
             conn, addr = s.accept()
-            p = Process(target=handle_request, args=(conn, addr, proxy_end))
+            p = Process(target=handle_echo, args=(addr, conn))
             p.daemon = True
             p.start()
             print("Started process ", p)
